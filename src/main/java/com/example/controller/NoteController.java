@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @RequestMapping("/note")
@@ -24,6 +25,7 @@ public class NoteController {
     }
     @PostMapping
     public ResponseEntity<String> addNote(@RequestBody Note note){
+        note.setLocalDateTime(LocalDateTime.now());
         return noteService.addNote(note);
     }
 

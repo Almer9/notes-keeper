@@ -2,16 +2,23 @@ package com.example.service;
 
 import com.example.core.Note;
 import com.example.repository.NoteRepository;
-import javax.inject.Inject;
-import javax.inject.Named;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-@Named
+
+@Service
 public class NoteServiceImpl implements NoteService{
-    @Inject
-    private NoteRepository noteRepository;
+
+    private final NoteRepository noteRepository;
+
+    @Autowired
+    public NoteServiceImpl(NoteRepository noteRepository) {
+        this.noteRepository = noteRepository;
+    }
+
     @Override
     public Collection<Note> getAllNotes() {
         return noteRepository.findAll();

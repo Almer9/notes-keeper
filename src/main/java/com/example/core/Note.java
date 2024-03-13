@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "note")
 @Getter
 @Setter
 public class Note {
