@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY notes-keeper-0.0.1-SNAPSHOT.jar /app/notes-keeper-0.0.1-SNAPSHOT.jar
+COPY ../../notes-keeper-0.0.1-SNAPSHOT.jar /app/notes-keeper-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
 ENV SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/notes
 ENV SPRING_DATASOURCE_USERNAME=postgres

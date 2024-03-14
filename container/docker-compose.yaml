@@ -4,9 +4,6 @@ services:
   db:
     networks:
       - default
-    build:
-      context: ./dockerfiles
-      dockerfile: postgres_server
     container_name: db
     ports:
       - "5432:5432"
@@ -14,20 +11,16 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
   app:
-    build:
-      context: ./dockerfiles
-      dockerfile: java_app
+    networks:
+      - default
     container_name: app
     depends_on:
       - db
     ports:
       - "8080:8080"
-    image: almer8/noteskeeper
+    image: almer8/noteskeeper:1.2
   pga:
     container_name: pga
-    build:
-      context: ./dockerfiles
-      dockerfile: postgres_pga
     networks:
       - default
     depends_on:
